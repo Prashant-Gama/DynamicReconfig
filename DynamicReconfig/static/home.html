@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Dynamic Service Analyser</title>
+  <meta content="" name="descriptison">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <!--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+-->
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap-grid.min.css" rel="stylesheet">
+  <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  
+
+  
+    <!-- Vendor JS Files -->
+  <script src="assets/vendor/jquery/jquery.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+  
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  
+</head>
+
+
+<body style="padding:0px; margin:0px; background-color:#fff;font-family:arial,helvetica,sans-serif,verdana,'Open Sans' ;background-image: url(assets/img/blue_texture.PNG);">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center" style="background-color:#e3f5f7;" >
+    <div class="container d-flex align-items-center" >
+
+      <div class="logo mr-auto">
+        <h1>Dynamic WEB-Service Analyser</h1>
+      </div>
+
+
+    </div>
+  </header><!-- End Header -->
+
+    <style>
+        .vertical {
+			border-left: 3px solid #3498db;
+			height: 325px;
+			position: absolute;
+			right: 0%;
+			padding: 16px;
+        }
+		.form_btns {
+			    min-width: 150px;
+		}
+
+
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+
+    </style>
+  <main id="main">
+
+<br>
+<br>
+<br>
+
+<!-- Modal -->
+<div class="modal fade" id="fileUploadModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><!--  
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        File Loaded Successfully
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal">ok</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="loader"></div>
+
+    <!-- ======= Order Section ======= -->
+    <section id="order" class="services">
+      <div class="container" style="max-width:94%">
+ 
+
+        <div class="row" >
+          <div class="col-md-4">
+					<div class="card">
+						<div class="card-header" style="background-color:#40aabc;"><strong>Old Service</strong></div>
+						<div class="card-body" style="background-color:#e3f5f7;" >
+						
+								  <form id="oldWSDLUploadForm" name="oldWSDLUploadForm">
+									  <div class="form-group">
+											<label >Upload Old WSDL :</label>
+											<div class="row" >
+												<div class="col-md-9" style="text-align: center;" >
+													<input id="oldWSDLFileUploadInput" type="file" name="file" class="file-input form-control" />
+												</div>
+												<div class="col-md-3" style="text-align: center;" >
+													<button type="submit" class="btn btn-primary">Upload</button>
+												</div>
+											</div>
+										</div>
+								  </form>
+								  
+								  
+								  <form id="oldTestCaseUploadForm" name="oldTestCaseUploadForm">
+									  <div class="form-group">
+											<label >Upload Old TestCases :</label>
+											<div class="row" >
+												<div class="col-md-9" style="text-align: center;" >
+													<input id="oldTSFileUploadInput" type="file" name="file" class="file-input form-control" required />
+												</div>
+												<div class="col-md-3" style="text-align: center;" >
+													<button type="submit" class="btn btn-primary">Upload</button>
+												</div>
+											</div>
+										</div>
+								  </form>
+								  
+								
+
+								<br/>
+								
+							
+						</div>
+					</div>
+				<br>
+
+				
+		  
+		  <div class="card">
+						<div class="card-header" style="background-color:#40aabc;"><strong>New Service</strong></div>
+						<div class="card-body" style="background-color:#e3f5f7;" >
+														  		  
+								  <form id="newWSDLUploadForm" name="newWSDLUploadForm">
+									  <div class="form-group">
+											<label >Upload New WSDL :</label>
+											<div class="row" >
+												<div class="col-md-9" style="text-align: center;" >
+													<input id="newWSDLFileUploadInput" type="file" name="file" class="file-input form-control" required />
+												</div>
+												<div class="col-md-3" style="text-align: center;" >
+													<button type="submit" class="btn btn-primary">Upload</button>
+												</div>
+											</div>
+										</div>
+								  </form>
+								  			  
+
+								<br/>
+								
+							
+						</div>
+			</div>
+				<br>
+
+		
+	
+          </div>
+		  
+		  
+		  
+		  <div class="col-md-1">
+			<div class = "vertical"></div>
+		  </div>
+		  
+		  <div class="col-md-7">
+			
+			 	<div class="card">
+					<div class="card-body" style="background-color:#e3f5f7;">
+						<div class="row" >
+							<div class="col-md-6" style="text-align: center;" >
+								<button id="runAnalysis" type="submit" class="btn btn-success form_btns"  style="text-align: center;">Run Change Analysis</button>
+							</div>
+							<div class="col-md-6" style="text-align: center;" >
+								<button id="downloadTS" class="btn btn-success form_btns"   >Download new Testcases</button> 
+							</div>
+						</div>
+					</div>
+				</div>
+			<br>
+			<br>
+ 		  <div class="card">
+						<div class="card-header" style="background-color:#40aabc;"><strong>Service Change Report</strong></div>
+						<div class="card-body" style="min-height: 300px; background-color:#e3f5f7;">
+								<div class="report" id="report">
+		
+								</div>						  		  
+								
+							
+						</div>
+			</div>
+
+
+		
+		</div>
+		
+        </div>
+      </div>
+    </section><!-- End Services Section -->
+
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    <div class="footer-top">
+      <div class="container">
+
+      </div>
+    </div>
+
+    <div class="container d-md-flex py-4">
+
+      <div class="mr-md-auto text-center text-md-left">
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+</body>
+
+</html>
